@@ -46,14 +46,14 @@ public class Server {
 
                 //Reading In streams
                 String info_get = null;
-                while((info_get = reader.readLine()) != null) {
-                    pwriter.write(info_get + "\n");
-                    pwriter.flush();
-                    whutil.log("Get from Client >" + info_get + "< ", 1);
-                }
+                info_get = reader.readLine();
+                whutil.log("Get from Client >" + info_get + "< ", 1);
                 //Check if saved_information was a Servercommand
-                whutil.log("Searching for Servercommand in saved_information", 1);
+                whutil.log("Searching for Servercommand in info_get(String)", 1);
                 checkcommand(info_get);
+                //Sending echo
+                pwriter.write("Echo: " + info_get + "\n");
+                pwriter.flush();
                 
                 //Close reader and writer
                 reader.close();
