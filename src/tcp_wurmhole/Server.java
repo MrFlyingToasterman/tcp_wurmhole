@@ -80,6 +80,11 @@ public class Server {
                 whutil.log("Server shutdown immediately", 2);
                 serverpoweron = false;
                 break;
+            case "kill":
+                whutil.log("Servercommand for killing process found!", 2);
+                whutil.log("Server is commiting suicide", 2);
+                System.exit(0);
+                break;
             default:
                 whutil.log("No Servercommand found", 2);
                 break;
