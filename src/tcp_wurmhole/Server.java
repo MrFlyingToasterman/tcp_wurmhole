@@ -23,13 +23,15 @@ public class Server {
     //This void will run the Server
     public static void startserver() {
         
+        whutil.log("Server starting", 1);
+        
         do {
         
             //I need to catch a possible exception
             try {
                 //Creating Socket that will listen to the Port 4444
                 ServerSocket wurmhole = new ServerSocket(4444); 
-                whutil.log("Server starting", 1);
+                whutil.log("Server ready", 1);
 
                 //Creating incomming connection
                 Socket client = wurmhole.accept();
