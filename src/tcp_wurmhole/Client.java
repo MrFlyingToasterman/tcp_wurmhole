@@ -38,8 +38,16 @@ public class Client {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
             //Sending Stuff to Server
-            pwriter.write(msg_send);
+            pwriter.write(msg_send + "\n");
             pwriter.flush();
+            
+            //Reading In streams
+                String info_get = null;
+                while((info_get = reader.readLine()) != null) {
+                    pwriter.write(info_get);
+                    pwriter.flush();
+                    System.out.println("Get from Server >" + info_get + "< ");
+                }
            
             //Close reader and writer
             reader.close();

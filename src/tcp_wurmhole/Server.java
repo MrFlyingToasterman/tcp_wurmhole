@@ -23,15 +23,15 @@ public class Server {
     //This void will run the Server
     public static void startserver() {
  
-        whutil.log("Server starting", 1);
 
         //I need to catch a possible exception
         try {
             //Creating Socket that will listen to the Port 4444
             ServerSocket wurmhole = new ServerSocket(4444);
-            whutil.log("Server ready", 1);
+            whutil.log("Server starting", 1);
 
             do {
+                whutil.log("Server ready", 1);
                 //Creating incomming connection
                 Socket client = wurmhole.accept();
                 
@@ -46,19 +46,15 @@ public class Server {
 
                 //Reading In streams
                 String info_get = null;
-                String saved_information = "";
-                //Need a loop ? Why not Zoidberg...
-                while ((info_get = reader.readLine()) != null) {
-                    whutil.log("Getting from client =>" + info_get + "<", 1);
+                while((info_get = reader.readLine()) != null) {
+                    pwriter.write(info_get + "\n");
+                    pwriter.flush();
+                    whutil.log("Get from Client >" + info_get + "< ", 1);
                 }
-                //Print complete information
-                whutil.log(saved_information, 1);
                 //Check if saved_information was a Servercommand
                 whutil.log("Searching for Servercommand in saved_information", 1);
-                checkcommand(saved_information);
-                //Send echo back to client
-                pwriter.write(saved_information);
-                pwriter.flush();
+                checkcommand(info_get);
+                
                 //Close reader and writer
                 reader.close();
                 pwriter.close();
