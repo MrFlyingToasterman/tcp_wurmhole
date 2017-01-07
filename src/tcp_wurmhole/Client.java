@@ -23,10 +23,14 @@ public class Client {
 
         //I need to catch a possible exception
         try {
+            boolean stay = true;
+            System.out.println("Connecting to Server 127.0.0.1:4444\n"
+                    + "Type poweroff to stop the Serverloop or kill to kill the Server.");
             
             do {
                 
                 String msg_send = whutil.scan("Enter your message: ");
+                
 
                 //Creating socket for connection with localhost
                 Socket client = new Socket("127.0.0.1", 4444);
@@ -54,7 +58,7 @@ public class Client {
                 reader.close();
                 pwriter.close();
 
-                }while(true);
+                }while(stay);
 
         } catch (Exception e) {
             e.printStackTrace();

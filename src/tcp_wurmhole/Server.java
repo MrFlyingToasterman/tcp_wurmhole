@@ -28,7 +28,7 @@ public class Server {
         try {
             //Creating Socket that will listen to the Port 4444
             ServerSocket wurmhole = new ServerSocket(4444);
-            whutil.log("Server starting", 1);
+            whutil.log("Starting Server on Port 4444", 1);
 
             do {
                 whutil.log("Server ready", 1);
@@ -52,6 +52,7 @@ public class Server {
                 whutil.log("Searching for Servercommand in info_get(String)", 1);
                 checkcommand(info_get);
                 //Sending echo
+                whutil.log("Sending echo to Client", 1);
                 pwriter.write("Echo: " + info_get + "\n");
                 pwriter.flush();
                 
