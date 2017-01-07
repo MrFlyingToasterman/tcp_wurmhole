@@ -10,7 +10,6 @@ package tcp_wurmhole;
 public class Tcp_wurmhole {
     
     public static whutils whutil = new whutils();
-    public static Server wurmhole = new Server();
 
     public static void main(String[] args) {
         
@@ -26,10 +25,10 @@ public class Tcp_wurmhole {
             
             switch (input) {
                 case "1":
-                    wurmhole.startserver();
+                    Server.startserver();
                     break;
                 case "2":
-                    
+                    Client.startclient();
                     break;
                 case "3":
                     System.exit(0);
