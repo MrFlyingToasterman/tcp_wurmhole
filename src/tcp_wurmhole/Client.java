@@ -37,15 +37,16 @@ public class Client {
             InputStream in = client.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-            //Sending STuff to Server
+            //Sending Stuff to Server
             pwriter.write(msg_send);
             pwriter.flush();
-
+           
             //Close reader and writer
             reader.close();
             pwriter.close();
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
