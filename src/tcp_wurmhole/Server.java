@@ -18,6 +18,7 @@ import java.net.Socket;
 public class Server {
     
     public static whutils whutil = new whutils();
+    public static boolean serverpoweron = true;
     
     //This void will run the Server
     public static void startserver() {
@@ -58,6 +59,9 @@ public class Server {
                 }
                 //Print complete information
                 whutil.log(saved_information, 1);
+                //Check if saved_information was a Servercommand
+                 whutil.log("Searching for Servercommand in saved_information", 1);
+                checkcommand(saved_information);
                 //Close reader and writer
                 reader.close();
                 pwriter.close();
@@ -65,7 +69,21 @@ public class Server {
             } catch (Exception e) {
             }
             
-        }while(true);
+        }while(serverpoweron);
+    }
+    
+    public static void checkcommand(String checkthis) {
+        
+        switch (checkthis) {
+            case "poweroff":
+                whutil.log("Servercommand for shutdown found!", 2);
+                whutil.log("Server shutdown immediately", 2);
+                serverpoweron = false;
+                break;
+            default:
+                whutil.log("No Servercommand found", 2);
+                break;
+        }
     }
     
 }

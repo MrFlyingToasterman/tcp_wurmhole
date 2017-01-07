@@ -15,9 +15,13 @@ import java.net.Socket;
  * @author Darius Musiolik
  */
 public class Client {
+    
+    public static whutils whutil = new whutils();
 
     //This void starts the client
     public static void startclient() {
+
+        String msg_send = whutil.scan("Enter your message: ");
 
         //I need to catch a possible exception
         try {
@@ -34,7 +38,7 @@ public class Client {
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
             //Sending STuff to Server
-            pwriter.write("Say no more fam");
+            pwriter.write(msg_send);
             pwriter.flush();
 
             //Close reader and writer
