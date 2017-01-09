@@ -61,7 +61,8 @@ public class Client {
                 }while(stay);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Error: Lost connection to Server!");
         }
 
     }
