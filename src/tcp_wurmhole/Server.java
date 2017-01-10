@@ -19,6 +19,8 @@ public class Server {
     
     public static whutils whutil = new whutils();
     public static boolean serverpoweron = true;
+    public static boolean kill = false;
+    public static boolean sendlog = false;
     
     //This void will run the Server
     public static void startserver() {
@@ -51,10 +53,30 @@ public class Server {
                 //Check if saved_information was a Servercommand
                 whutil.log("Searching for Servercommand in info_get(String)", 1);
                 checkcommand(info_get);
-                //Sending echo
-                whutil.log("Sending echo to Client", 1);
-                pwriter.write("Echo: " + info_get + "\n");
-                pwriter.flush();
+                
+                
+                //More Server Commands
+                if (kill == true) {
+                    //Sending log
+                    pwriter.println("Server is commiting suicide!");
+                    pwriter.flush();
+                    System.exit(0);
+                }
+                else if (sendlog == true) {
+                    //Sending log
+                    whutil.log("Server sending logfile!", 2);
+                    pwriter.println("Logfile -> \n" + whutil.logfile);
+                    pwriter.flush();
+                    //Do not send everytime
+                    sendlog = false;
+                }
+                else {
+                    //Sending echo only if no command was found!
+                    whutil.log("Sending echo to Client", 1);
+                    pwriter.write("Echo -> " + info_get + "\n");
+                    pwriter.flush();
+                }
+                
                 
                 //Close reader and writer
                 reader.close();
@@ -75,10 +97,14 @@ public class Server {
                 whutil.log("Server shutdown immediately", 2);
                 serverpoweron = false;
                 break;
+            case "gimme_log":
+                whutil.log("Servercommand for logsend found!", 2);
+                sendlog = true;
+                break;
             case "kill":
                 whutil.log("Servercommand for killing process found!", 2);
                 whutil.log("Server is commiting suicide", 2);
-                System.exit(0);
+                kill = true;
                 break;
             default:
                 whutil.log("No Servercommand found", 2);

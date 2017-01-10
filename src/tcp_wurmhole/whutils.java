@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class whutils {
     
+    public String logfile = "";
+    
     public void log(String msg, int type) {
         
         /*
@@ -42,6 +44,7 @@ public class whutils {
                 break;
         }
         System.out.println(preset + msg + gimme_time());
+        logfile = logfile + "\n" + preset + msg + gimme_time() + "\n";
     }
     
     public String scan(String msg) {
