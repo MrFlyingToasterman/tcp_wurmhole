@@ -17,7 +17,7 @@ public class Tcp_wurmhole {
         
         do {
         
-            System.out.println("Welcome to my tcp_wurmhole!\n\nDo you wish to run the Server or the client ?\n"
+            System.out.println("Welcome to my tcp_wurmhole! ... Really 'wurm' -hole ?\nWell it must be a German thing..\n\nDo you wish to run the Server or the client ?\n"
                     + "[1] Server\n"
                     + "[2] Client\n"
                     + "[3] Exit\n\n");

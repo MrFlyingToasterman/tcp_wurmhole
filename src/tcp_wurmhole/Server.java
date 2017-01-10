@@ -21,6 +21,7 @@ public class Server {
     public static boolean serverpoweron = true;
     public static boolean kill = false;
     public static boolean sendlog = false;
+    public static boolean clear = false;
     
     //This void will run the Server
     public static void startserver() {
@@ -70,6 +71,13 @@ public class Server {
                     //Do not send everytime
                     sendlog = false;
                 }
+                else if (clear == true) {
+                    //Sending log
+                    pwriter.println("cleared logfile");
+                    pwriter.flush();
+                    //Do not send everytime
+                    clear = false;
+                }
                 else {
                     //Sending echo only if no command was found!
                     whutil.log("Sending echo to Client", 1);
@@ -105,6 +113,10 @@ public class Server {
                 whutil.log("Servercommand for killing process found!", 2);
                 whutil.log("Server is commiting suicide", 2);
                 kill = true;
+                break;
+            case "clear":
+                whutil.log("Servercommand for deleteing history found!", 2);
+                whutil.logfile = "";
                 break;
             default:
                 whutil.log("No Servercommand found", 2);
