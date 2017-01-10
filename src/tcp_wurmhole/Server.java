@@ -117,6 +117,7 @@ public class Server {
             case "clear":
                 whutil.log("Servercommand for deleteing history found!", 2);
                 whutil.logfile = "";
+                clear = true;
                 break;
             default:
                 whutil.log("No Servercommand found", 2);
