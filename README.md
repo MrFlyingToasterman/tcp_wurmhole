@@ -5,10 +5,10 @@ You can connect with a custom IP, so its possible to use it with <br>
 multiple computers. 
 
 # Servercommands
-    kill -> Kills the serverprocess <br>
-    poweroff -> Stops the serverloop <br>
-    gimme_log -> Sends complete logfile to client <br>
-    clear -> Clears logfile <br>
+    kill -> Kills the serverprocess
+    poweroff -> Stops the serverloop
+    gimme_log -> Sends complete logfile to client
+    clear -> Clears logfile
 
 # License
 This is free (as in freedom) software! <br>
